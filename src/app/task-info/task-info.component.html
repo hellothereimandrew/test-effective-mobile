@@ -1,0 +1,63 @@
+<div class="background">
+  <div>
+    <button mat-raised-button routerLink="/">Вернуться к списку задач</button>
+  </div>
+
+  <mat-card *ngIf="!editable" class="card">
+    <mat-card-header>
+      <div class="flex">
+        <mat-card-title style="cursor: pointer; margin-right: 10px">{{ currentTask.name }}</mat-card-title>
+        <mat-icon (click)="editable = true">edit</mat-icon>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>Приоритет: {{ currentTask.priority }}</p>
+      <p>Статус: {{ currentTask.status }}</p>
+      <p>Исполнитель: {{ currentTask.user }}</p>
+      <p>Срок: {{ currentTask.deadline }}</p>
+      <p>Описание: {{ currentTask.description }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="editable" class="card" [formGroup]="dataForm">
+    <mat-card-header>
+      <mat-card-title>{{ currentTask.name }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>Приоритет: {{ currentTask.priority }}</p>
+      <mat-form-field>
+        <mat-label>Статус</mat-label>
+
+        <mat-select formControlName="status">
+          <mat-option value="Новая">Новая</mat-option>
+          <mat-option value="В работе">В работе</mat-option>
+          <mat-option value="Тестирование">Тестирование</mat-option>
+          <mat-option value="Выполнено">Выполнено</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="flex">
+        <mat-form-field>
+          <mat-label>Исполнитель</mat-label>
+
+          <mat-select formControlName="user">
+            <mat-option value="Андрей Дарий">Андрей Дарий</mat-option>
+            <mat-option value="Тодд Говард">Тодд Говард</mat-option>
+            <mat-option value="Павел Дуров">Павел Дуров</mat-option>
+            <mat-option value="Марк Цукерберг">Марк Цукерберг</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <p>Срок: {{ currentTask.deadline }}</p>
+      <p>Описание: {{ currentTask.description }}</p>
+
+      <mat-card-actions>
+        <button mat-button (click)="save()">Сохранить</button>
+        <button mat-button (click)="editable = false">Отмена</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>

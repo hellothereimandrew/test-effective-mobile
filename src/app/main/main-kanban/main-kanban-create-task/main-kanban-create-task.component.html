@@ -1,0 +1,85 @@
+<div *ngIf="!hidePopup">
+  <mat-card class="card" [formGroup]="dataForm">
+    <mat-card-header>
+      <mat-card-title>
+        <p class="text-align-center">Новая задача</p>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Название</mat-label>
+
+      <input matInput type="text" formControlName="name" />
+      <button
+        *ngIf="dataForm.controls['name'].value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="dataForm.controls['name'].reset()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Приоритет</mat-label>
+
+      <mat-select formControlName="priority">
+        <mat-option value="Низкий">Низкий</mat-option>
+        <mat-option value="Средний">Средний</mat-option>
+        <mat-option value="Высокий">Высокий</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Статус</mat-label>
+
+      <mat-select formControlName="status">
+        <mat-option value="new">Новая</mat-option>
+        <mat-option value="processing">В работе</mat-option>
+        <mat-option value="test">Тестирование</mat-option>
+        <mat-option value="completed">Выполнено</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Срок</mat-label>
+
+      <mat-select formControlName="deadline">
+        <mat-option value="Неделя">Неделя</mat-option>
+        <mat-option value="Месяц">Месяц</mat-option>
+        <mat-option value="Квартал">Квартал</mat-option>
+        <mat-option value="Полгода">Полгода</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Исполнитель</mat-label>
+
+      <mat-select formControlName="user">
+        <mat-option value="Андрей Дарий">Андрей Дарий</mat-option>
+        <mat-option value="Тодд Говард">Тодд Говард</mat-option>
+        <mat-option value="Павел Дуров">Павел Дуров</mat-option>
+        <mat-option value="Марк Цукерберг">Марк Цукерберг</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Описание</mat-label>
+
+      <input matInput type="text" formControlName="description" />
+      <button
+        *ngIf="dataForm.controls['description'].value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="dataForm.controls['description'].reset()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-card-actions class="flex-center">
+      <button mat-button (click)="createNewTask()">Создать</button>
+      <button mat-button (click)="cancel()">Отмена</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

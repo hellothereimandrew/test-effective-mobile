@@ -1,0 +1,21 @@
+<div class="create-task-container">
+  <button mat-raised-button (click)="openPopup()">Создать задачу</button>
+</div>
+
+<div class="kanban">
+  <div *ngFor="let task of kanban" class="tasks-table">
+    <div class="task-list">
+      <p class="task-list__header">{{ task?.title }}</p>
+
+      <app-main-kanban-card *ngFor="let item of task?.items" [task]="item"> {{ item }}</app-main-kanban-card>
+    </div>
+  </div>
+
+  <div class="task-creation">
+    <app-main-kanban-create-task
+      [hidePopup]="hidePopup"
+      (popUpListener)="openPopup()"
+      (taskListener)="pushTask($event)">
+    </app-main-kanban-create-task>
+  </div>
+</div>

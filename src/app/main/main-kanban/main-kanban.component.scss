@@ -1,0 +1,24 @@
+.create-task-container {
+  margin: 0 0 20px 45px;
+}
+
+.kanban {
+  display: flex;
+  margin-top: 20px;
+
+  .tasks-table {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+
+    .task-list {
+      .task-list__header {
+        text-align: center;
+      }
+    }
+  }
+
+  .task-creation {
+    width: 100%;
+  }
+}
